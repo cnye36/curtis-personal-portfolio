@@ -12,13 +12,13 @@ export default function ProjectsPage() {
     <div className="py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="mb-16">
-          <p className="text-violet-600 font-semibold text-sm tracking-widest uppercase mb-4">
+          <p className="text-violet-400 font-semibold text-sm tracking-widest uppercase mb-4">
             My Work
           </p>
-          <h1 className="text-6xl font-black text-zinc-900 tracking-tight mb-6">
+          <h1 className="text-6xl font-black text-zinc-50 tracking-tight mb-6">
             Projects
           </h1>
-          <p className="text-xl text-zinc-500 max-w-2xl leading-relaxed">
+          <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed">
             Things I&apos;ve built — from AI automation platforms to developer
             tools. Always shipping, always learning.
           </p>
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         </div>
 
         {projects.length === 0 && (
-          <div className="text-center py-24 text-zinc-400">
+          <div className="text-center py-24 text-zinc-500">
             <p className="text-lg">Projects coming soon.</p>
           </div>
         )}
