@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Curtis Nye — Personal Portfolio
+
+Personal portfolio site for [Curtis Nye](https://github.com/cnye36): developer and AI builder. Showcases featured work, skills, and contact links in a fast, static Next.js app.
+
+## Features
+
+- **Home** — Hero, skills, featured projects, and contact section
+- **Projects** — Full project grid with status badges (live, in progress, archived)
+- **Responsive layout** — Mobile nav, sticky header, dark theme
+- **SEO** — Page metadata and Open Graph tags via the App Router
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- [React 19](https://react.dev)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Geist](https://vercel.com/font) via `next/font`
+
+## Project Structure
+
+```
+app/
+  layout.tsx      # Root layout, fonts, metadata
+  page.tsx        # Home page
+  projects/       # Projects listing
+  globals.css     # Global styles
+components/
+  Navbar.tsx      # Site navigation
+  Footer.tsx      # Footer with social links
+  ProjectCard.tsx # Project card UI
+  SocialLinks.tsx # GitHub & LinkedIn links
+lib/
+  projects.ts     # Project data (single source of truth)
+public/
+  projects/       # Project screenshot images
+scripts/
+  capture-project-screenshots.mjs  # Optional Playwright screenshot tool
+```
 
 ## Getting Started
 
-First, run the development server:
+**Requirements:** Node.js 20+, [pnpm](https://pnpm.io)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/cnye36/curtis-personal-portfolio.git
+cd curtis-personal-portfolio
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command        | Description              |
+| -------------- | ------------------------ |
+| `pnpm dev`     | Start development server |
+| `pnpm build`   | Production build         |
+| `pnpm start`   | Serve production build   |
+| `pnpm lint`    | Run ESLint               |
 
-## Learn More
+## Adding or Updating Projects
 
-To learn more about Next.js, take a look at the following resources:
+Edit `lib/projects.ts`. Each project needs:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `slug` — Unique identifier (used for image filenames)
+- `title`, `description`, `tags`, `href`
+- `image` — Path under `public/projects/` (e.g. `/projects/my-app.png`)
+- `featured` — `true` to show on the home page
+- `status` — `"live"` | `"in-progress"` | `"archived"`
+- `github` — Optional GitHub repo URL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After adding an image, place the screenshot in `public/projects/`.
 
-## Deploy on Vercel
+### Regenerating screenshots (optional)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A Playwright script captures project thumbnails from live URLs:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm exec playwright install chromium   # first time only
+node scripts/capture-project-screenshots.mjs
+```
+
+Update the `targets` array in the script when URLs or slugs change. Playwright is not a project dependency; install it globally or ad hoc when you run the script.
+
+## Deployment
+
+Built for [Vercel](https://vercel.com) (or any Node host that supports Next.js):
+
+```bash
+pnpm build
+```
+
+Connect the GitHub repo in Vercel for automatic deploys on push to `main`.
+
+## License
+
+Private — all rights reserved.
