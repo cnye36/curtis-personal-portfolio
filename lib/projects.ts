@@ -34,6 +34,17 @@ export const projects: Project[] = [
     status: "live",
   },
   {
+    slug: "did-ai-write-it",
+    title: "Did AI Write It?",
+    description:
+      "AI content detector for educators verifying student work authenticity, and for creators who want to confirm their writing passes as human.",
+    tags: ["AI", "Detection", "Education", "SaaS", "Next.js"],
+    href: "https://didaiwriteit.com",
+    image: "/projects/did-ai-write-it.png",
+    featured: true,
+    status: "live",
+  },
+  {
     slug: "ai-social-media-manager",
     title: "AI Social Media Manager",
     description:

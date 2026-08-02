@@ -10,6 +10,7 @@ const targets = [
   { slug: "affinitybots", url: "https://affinitybots.com" },
   { slug: "ai-social-media-manager", url: "https://ai-social-media-manager-nu.vercel.app" },
   { slug: "let-ai-write-it", url: "https://letaiwriteit.com" },
+  { slug: "did-ai-write-it", url: "https://didaiwriteit.com" },
   { slug: "ai-email-sequence-manager", url: "https://ai-automated-email-manager.vercel.app" },
   { slug: "bidfluence", url: "https://bidfluence-app.vercel.app" },
   { slug: "ai-prompt-enhancer", url: "https://v0-next-js-ai-prompt-enhancer-nine.vercel.app" },
